@@ -5,7 +5,7 @@
     <data>
         <variable
             name="photo"
-            type="com.lessons.img.model.Photo" />
+            type="ulanapp.imagegram.data.model.Photo" />
         
         <variable
             name="itemClick"
@@ -21,13 +21,13 @@
             android:id="@+id/item_photo"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:imageUrl="@{photo.src.medium}"
+            app:imageUrl="@{photo.webformatURL}"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{photo.photographer}"
+            android:text="Ulan"
             android:layout_gravity="bottom"
             android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>

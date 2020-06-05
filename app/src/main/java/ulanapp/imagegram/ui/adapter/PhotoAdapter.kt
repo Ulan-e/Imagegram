@@ -8,49 +8,50 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.lessons.img.databinding.PhotoItemBinding
 import ulanapp.imagegram.data.model.Photo
-import com.squareup.picasso.Picasso
 import ulanapp.imagegram.listeners.OnItemClickListener
 
 class PhotoAdapter : RecyclerView.Adapter<PhotoViewHolder> {
 
-    private var mContext: Context
-    private var mPhotos: List<Photo>
+    private var context: Context
+    private var photos: List<Photo>
 
     constructor(mContext: Context, mPhotos: List<Photo>) : super() {
-        this.mContext = mContext
-        this.mPhotos = mPhotos
+        this.context = mContext
+        this.photos = mPhotos
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
-        val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding = PhotoItemBinding.inflate(inflater, parent, false)
         return PhotoViewHolder(binding.root)
     }
 
     override fun getItemCount(): Int {
-        return mPhotos.size
+        return photos.size
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val photo = mPhotos[position]
+        val photo = photos[position]
         holder.binding?.photo = photo
         holder.binding?.itemClick = object :
             OnItemClickListener {
             override fun onItemClick(view: View) {
-                Toast.makeText(mContext, "Image " + photo.photographer, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Image " + photo.toString(), Toast.LENGTH_LONG).show()
+
+
             }
 
         }
     }
 
-
     companion object {
         @BindingAdapter("imageUrl")
         @JvmStatic
         fun ImageView.loadPhoto(url: String) {
-            Picasso.get().load(url).into(this)
+            Glide.with(context).load(url).into(this)
         }
     }
 

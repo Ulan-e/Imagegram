@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.lessons.img.R
 import ulanapp.imagegram.data.model.Photo
-import ulanapp.imagegram.data.model.Result
 import kotlinx.android.synthetic.main.activity_main.*
+import ulanapp.imagegram.data.model.PhotosResponse
 import ulanapp.imagegram.ui.adapter.PhotoAdapter
 import ulanapp.imagegram.ui.viewmodel.PhotosViewModel
 
@@ -23,13 +23,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         viewModel = ViewModelProvider(this).get(PhotosViewModel::class.java)
         val data = viewModel.loadPhotos()
-        data.observe(this, Observer<Result> {
-            val list  = it.photos
-            photos.addAll(list)
+        data.observe(this, Observer<PhotosResponse> {
+            val list  = it.hits
+            list?.let { it1 -> photos.addAll(it1) }
             Log.d("ulanbek", "Photo List is " + photos.size)
             setUpAdapter()
         })
@@ -42,12 +40,6 @@ class MainActivity : AppCompatActivity() {
         recycler_photos.adapter = adapter
         Log.d("ulanbek", " set adapter ")
         adapter.notifyDataSetChanged()
-        foo(x = 1, y = 1, width = 5)
     }
-
-    private fun foo(x: Int, y: Int, width: Int){
-
-    }
-
 
 }
