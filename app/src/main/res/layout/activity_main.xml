@@ -20,6 +20,7 @@
             android:layout_height="58dp"
             android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
+            android:layout_gravity="top"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 

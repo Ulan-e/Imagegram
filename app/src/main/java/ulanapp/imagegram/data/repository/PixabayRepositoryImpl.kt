@@ -28,7 +28,7 @@ class PixabayRepositoryImpl : Repository {
 
     override fun getPhotos(query: String): MutableLiveData<PhotosResponse> {
         val liveData: MutableLiveData<PhotosResponse> = MutableLiveData()
-        val call = mApiService.getPhotos(API_KEY, "photo", 15)
+        val call = mApiService.getPhotos(API_KEY, query, 15)
         call?.enqueue(object : Callback<PhotosResponse> {
             override fun onFailure(call: Call<PhotosResponse>, t: Throwable) {
                 liveData.value = null
