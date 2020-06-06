@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity(), CallFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setSupportActionBar(main_toolbar)
         var mainVewModel = ViewModelProvider(this, MainViewModelFactory(this))
             .get(MainViewModel::class.java)
 

@@ -41,7 +41,20 @@ class HomeFragment: Fragment() {
             }
         })
 
+        initChips()
 
+    }
+
+    private fun initChips() {
+        val chips = activity!!.applicationContext.resources.getStringArray(R.array.chips)
+        for(title in chips){
+            val chip = Chip(activity)
+            chip.text = title
+            chip.setTextColor(Color.WHITE)
+            chip.setChipBackgroundColorResource(R.color.colorAccent)
+            chip.chipCornerRadius = 16F
+            home_chip_group.addView(chip)
+        }
     }
 
     private fun setupAdapter() {
@@ -51,4 +64,5 @@ class HomeFragment: Fragment() {
         home_recycler_view.adapter = adapter
         adapter.notifyDataSetChanged()
     }
+
 }

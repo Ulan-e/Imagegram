@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">IMG</string>
+    <string name="app_name">Imagegram</string>
+
+    <string-array name="chips">
+        <item>popular</item>
+        <item>latest</item>
+        <item>beautiful</item>
+        <item>modest</item>
+        <item>2020</item>
+    </string-array>
 </resources>
