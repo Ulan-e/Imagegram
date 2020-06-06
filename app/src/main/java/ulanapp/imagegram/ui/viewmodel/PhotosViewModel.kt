@@ -9,12 +9,10 @@ import ulanapp.imagegram.data.repository.PixabayRepositoryImpl
 class PhotosViewModel : ViewModel() {
 
     private var mutableLiveData: MutableLiveData<PhotosResponse>
-    private var mPexelsRepository: Repository
+    private var repository: Repository = PixabayRepositoryImpl()
 
     init {
-        mPexelsRepository =
-            PixabayRepositoryImpl()
-        mutableLiveData = mPexelsRepository.getPhotos("Nature")
+        mutableLiveData = repository.getPhotos("Nature")
     }
 
     public fun loadPhotos(): MutableLiveData<PhotosResponse> {

@@ -1,45 +1,52 @@
 package ulanapp.imagegram.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import com.lessons.img.R
-import ulanapp.imagegram.data.model.Photo
-import kotlinx.android.synthetic.main.activity_main.*
-import ulanapp.imagegram.data.model.PhotosResponse
-import ulanapp.imagegram.ui.adapter.PhotoAdapter
-import ulanapp.imagegram.ui.viewmodel.PhotosViewModel
+import com.lessons.img.databinding.ActivityMainBinding
+import ulanapp.imagegram.helpers.DISCOVER_FRAGMENT
+import ulanapp.imagegram.helpers.HOME_FRAGMENT
+import ulanapp.imagegram.helpers.LIKED_FRAGMENT
+import ulanapp.imagegram.listeners.CallFragmentListener
+import ulanapp.imagegram.ui.fragments.DiscoverFragment
+import ulanapp.imagegram.ui.fragments.HomeFragment
+import ulanapp.imagegram.ui.fragments.LikedFragment
+import ulanapp.imagegram.ui.viewmodel.MainViewModel
+import ulanapp.imagegram.ui.viewmodel.MainViewModelFactory
 
-class MainActivity : AppCompatActivity() {
-
-    private var photos: ArrayList<Photo> = ArrayList<Photo>()
-    private lateinit var adapter: PhotoAdapter
-    private lateinit var viewModel: PhotosViewModel
+class MainActivity : AppCompatActivity(), CallFragmentListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val mainVewModel = ViewModelProvider(this, MainViewModelFactory(this))
+            .get(MainViewModel::class.java)
+
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(PhotosViewModel::class.java)
-        val data = viewModel.loadPhotos()
-        data.observe(this, Observer<PhotosResponse> {
-            val list  = it.hits
-            list?.let { it1 -> photos.addAll(it1) }
-            Log.d("ulanbek", "Photo List is " + photos.size)
-            setUpAdapter()
-        })
-
+        val activityBinding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+        activityBinding.mainViewModel = mainVewModel
     }
 
-    private fun setUpAdapter(){
-        adapter = PhotoAdapter(this, photos)
-        recycler_photos.layoutManager = GridLayoutManager(this, 2)
-        recycler_photos.adapter = adapter
-        Log.d("ulanbek", " set adapter ")
-        adapter.notifyDataSetChanged()
+    override fun callFragment(title: String) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_container, getFragment(title))
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun getFragment(title: String): Fragment {
+        return when (title) {
+            HOME_FRAGMENT -> HomeFragment()
+            DISCOVER_FRAGMENT -> DiscoverFragment()
+            LIKED_FRAGMENT -> LikedFragment()
+            else -> DiscoverFragment()
+        }
     }
 
 }

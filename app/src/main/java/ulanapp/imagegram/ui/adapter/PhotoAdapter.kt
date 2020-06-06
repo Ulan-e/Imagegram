@@ -13,7 +13,7 @@ import com.lessons.img.databinding.PhotoItemBinding
 import ulanapp.imagegram.data.model.Photo
 import ulanapp.imagegram.listeners.OnItemClickListener
 
-class PhotoAdapter : RecyclerView.Adapter<PhotoViewHolder> {
+class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
 
     private var context: Context
     private var photos: List<Photo>
@@ -39,9 +39,7 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoViewHolder> {
         holder.binding?.itemClick = object :
             OnItemClickListener {
             override fun onItemClick(view: View) {
-                Toast.makeText(context, "Image " + photo.toString(), Toast.LENGTH_LONG).show()
-
-
+                Toast.makeText(context, "Image " + photo.id, Toast.LENGTH_LONG).show()
             }
 
         }
@@ -53,6 +51,12 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoViewHolder> {
         fun ImageView.loadPhoto(url: String) {
             Glide.with(context).load(url).into(this)
         }
+    }
+
+    class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val binding: PhotoItemBinding? = androidx.databinding.DataBindingUtil.bind<PhotoItemBinding>(itemView)
+
     }
 
 }

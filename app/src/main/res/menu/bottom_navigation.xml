@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home_24dp"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/discover"
+        android:title="Discover"
+        android:icon="@drawable/ic_map_24dp"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/liked"
+        android:title="Liked"
+        android:icon="@drawable/ic_favorite_24dp"
+        app:showAsAction="always"/>
+
+</menu>
