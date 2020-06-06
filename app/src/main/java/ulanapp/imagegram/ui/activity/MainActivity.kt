@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity(), CallFragmentListener {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         activityBinding.mainViewModel = mainVewModel
         callFragment(HOME_FRAGMENT)
+
     }
 
     override fun callFragment(title: String) {
