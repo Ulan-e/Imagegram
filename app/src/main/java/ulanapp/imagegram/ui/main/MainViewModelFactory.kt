@@ -1,4 +1,4 @@
-package ulanapp.imagegram.ui.viewmodel
+package ulanapp.imagegram.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

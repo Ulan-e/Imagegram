@@ -4,7 +4,7 @@
 
         <variable
             name="mainViewModel"
-            type="ulanapp.imagegram.ui.viewmodel.MainViewModel" />
+            type="ulanapp.imagegram.ui.main.MainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

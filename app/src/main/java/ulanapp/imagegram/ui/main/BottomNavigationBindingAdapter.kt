@@ -1,4 +1,4 @@
-package ulanapp.imagegram.ui.adapter
+package ulanapp.imagegram.ui.main
 
 import androidx.databinding.BindingAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView

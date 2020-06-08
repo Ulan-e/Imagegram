@@ -1,4 +1,4 @@
-package ulanapp.imagegram.ui.activity
+package ulanapp.imagegram.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,16 +7,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.lessons.img.R
 import com.lessons.img.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import ulanapp.imagegram.helpers.DISCOVER_FRAGMENT
 import ulanapp.imagegram.helpers.HOME_FRAGMENT
 import ulanapp.imagegram.helpers.LIKED_FRAGMENT
 import ulanapp.imagegram.listeners.CallFragmentListener
 import ulanapp.imagegram.ui.fragments.DiscoverFragment
-import ulanapp.imagegram.ui.fragments.HomeFragment
+import ulanapp.imagegram.ui.home.HomeFragment
 import ulanapp.imagegram.ui.fragments.LikedFragment
-import ulanapp.imagegram.ui.viewmodel.MainViewModel
-import ulanapp.imagegram.ui.viewmodel.MainViewModelFactory
 
 class MainActivity : AppCompatActivity(), CallFragmentListener {
 

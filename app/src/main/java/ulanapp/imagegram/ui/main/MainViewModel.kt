@@ -1,7 +1,6 @@
-package ulanapp.imagegram.ui.viewmodel
+package ulanapp.imagegram.ui.main
 
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
