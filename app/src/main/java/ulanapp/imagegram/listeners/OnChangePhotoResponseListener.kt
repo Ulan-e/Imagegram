@@ -5,6 +5,6 @@ import ulanapp.imagegram.data.model.PhotosResponse
 
 interface OnChangePhotoResponseListener {
 
-    fun onChange(photoResponse: LiveData<PhotosResponse>)
+    fun onChange(photos: LiveData<PhotosResponse>)
 
 }

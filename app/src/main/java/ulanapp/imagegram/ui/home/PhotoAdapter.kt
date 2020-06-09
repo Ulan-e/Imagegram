@@ -1,4 +1,4 @@
-package ulanapp.imagegram.ui.adapter
+package ulanapp.imagegram.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater

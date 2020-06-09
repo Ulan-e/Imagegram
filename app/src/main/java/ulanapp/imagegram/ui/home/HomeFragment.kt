@@ -1,23 +1,24 @@
 package ulanapp.imagegram.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.lessons.img.R
 import com.lessons.img.databinding.HomeLayoutBinding
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.home_layout.*
 import ulanapp.imagegram.data.model.Photo
 import ulanapp.imagegram.data.model.PhotosResponse
 import ulanapp.imagegram.data.repository.PixabayRepositoryImpl
 import ulanapp.imagegram.data.repository.Repository
 import ulanapp.imagegram.listeners.OnChangePhotoResponseListener
-import ulanapp.imagegram.ui.adapter.PhotoAdapter
+import ulanapp.imagegram.ui.search.SearchFragment
+
 
 class HomeFragment : Fragment(), OnChangePhotoResponseListener {
 
@@ -38,12 +39,20 @@ class HomeFragment : Fragment(), OnChangePhotoResponseListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         repository = PixabayRepositoryImpl()
 
         homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository, this))
             .get(HomeViewModel::class.java)
         homeLayoutBinding.home = homeViewModel
-
+        homeLayoutBinding.homeSearch.setOnClickListener{
+            val fragment = SearchFragment()
+            activity!!.supportFragmentManager
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.main_container, fragment)
+                .commit()
+        }
     }
 
     private fun setupAdapter(photos: List<Photo>) {
@@ -54,12 +63,12 @@ class HomeFragment : Fragment(), OnChangePhotoResponseListener {
         adapter.notifyDataSetChanged()
     }
 
-    override fun onChange(photoResponse: LiveData<PhotosResponse>) {
-        photoResponse.observe(activity!!, Observer<PhotosResponse> {
-            val photos = mutableListOf<Photo>()
+    override fun onChange(photos: LiveData<PhotosResponse>) {
+        photos.observe(activity!!, Observer<PhotosResponse> {
+            val resultPhotos = mutableListOf<Photo>()
             it.hits?.let { result ->
-                photos.addAll(result)
-                setupAdapter(photos)
+                resultPhotos.addAll(result)
+                setupAdapter(resultPhotos)
             }
         })
     }

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.lessons.img.R
 import com.lessons.img.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 import ulanapp.imagegram.helpers.DISCOVER_FRAGMENT
 import ulanapp.imagegram.helpers.HOME_FRAGMENT
 import ulanapp.imagegram.helpers.LIKED_FRAGMENT
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), CallFragmentListener {
             .get(MainViewModel::class.java)
 
         setContentView(R.layout.activity_main)
+        setSupportActionBar(main_toolbar)
 
         val activityBinding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
