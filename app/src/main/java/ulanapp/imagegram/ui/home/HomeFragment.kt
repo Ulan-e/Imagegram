@@ -53,10 +53,23 @@ class HomeFragment : Fragment(), OnChangePhotoResponseListener {
                 .replace(R.id.main_container, fragment)
                 .commit()
         }
+
+        handleLoadingProgress()
     }
 
-    private fun setupAdapter(photos: List<Photo>) {
-        val adapter = PhotoAdapter(activity!!, photos)
+    private fun handleLoadingProgress() {
+        homeViewModel.getLoadingResult().observe(activity!!,
+            Observer<Boolean> { t ->
+                if(t == true){
+                    homeLayoutBinding.homeProgress.visibility = View.VISIBLE
+                }else{
+                    homeLayoutBinding.homeProgress.visibility = View.GONE
+                }
+            })
+    }
+
+    private fun setupAdapter(photos: List<Photo>)   {
+        val adapter = PhotoAdapter(photos)
         val layoutManager = GridLayoutManager(activity!!, 2)
         home_recycler_view.layoutManager = layoutManager
         home_recycler_view.adapter = adapter

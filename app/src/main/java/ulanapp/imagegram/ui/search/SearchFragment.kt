@@ -83,7 +83,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupAdapter(photos: List<Photo>) {
-        val adapter = PhotoAdapter(activity!!, photos)
+        val adapter = PhotoAdapter(photos)
         val layoutManager = GridLayoutManager(activity!!, 2)
         search_results.layoutManager = layoutManager
         search_results.adapter = adapter
