@@ -17,9 +17,7 @@
             android:src="@drawable/ic_arrow_back"
             android:layout_alignParentLeft="true"
             android:layout_margin="7dp"
-            android:background="?android:attr/selectableItemBackground">
-
-        </ImageButton>
+            android:background="?android:attr/selectableItemBackground"/>
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
@@ -33,18 +31,12 @@
             android:background="@drawable/frame_search_view"
             android:layout_toRightOf="@+id/press_back"
             android:searchIcon="@null"
-            android:inputType="text">
-
-        </androidx.appcompat.widget.SearchView>
+            android:inputType="text"/>
     </RelativeLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_results"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_layout">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
+        android:layout_below="@+id/search_layout"/>
 </LinearLayout>

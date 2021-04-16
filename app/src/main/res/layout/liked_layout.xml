@@ -9,15 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Liked"
-        style="@style/BigTitleText">
-    </TextView>
+        style="@style/BigTitleText"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/liked_images"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="6dp"
-        android:background="@color/colorPrimary">
-
-    </androidx.viewpager.widget.ViewPager>
+        android:background="@color/colorPrimary"/>
 </LinearLayout>

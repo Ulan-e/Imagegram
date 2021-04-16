@@ -9,6 +9,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import ulanapp.imagegram.data.model.PhotosResponse
 import ulanapp.imagegram.data.repository.Repository
+import ulanapp.imagegram.helpers.BEAUTIFUL
+import ulanapp.imagegram.helpers.SUMMER
 import ulanapp.imagegram.helpers.TAG
 import ulanapp.imagegram.listeners.OnChangePhotoResponseListener
 import ulanapp.imagegram.ui.base.BaseViewModel
@@ -20,7 +22,6 @@ class HomeViewModel(
 
     private var changeListener: OnChangePhotoResponseListener = listener
     private var disposable: CompositeDisposable = CompositeDisposable()
-
     private var photos = MutableLiveData<PhotosResponse>()
 
     init {
@@ -52,11 +53,11 @@ class HomeViewModel(
                 changeListener.onChange(photos)
             }
             R.id.third_chip -> {
-                loadPhotos(true, "beautiful")
+                loadPhotos(true, BEAUTIFUL)
                 changeListener.onChange(photos)
             }
             R.id.fourth_chip -> {
-                loadPhotos(true, "summer")
+                loadPhotos(true, SUMMER)
                 changeListener.onChange(photos)
             }
         }
@@ -66,5 +67,4 @@ class HomeViewModel(
         super.onCleared()
         disposable.clear()
     }
-
 }

@@ -7,6 +7,7 @@ import com.lessons.img.R
 class BottomNavigationBindingAdapter {
 
     companion object {
+
         @BindingAdapter("onNavigationItemSelected")
         @JvmStatic
         fun setNavigationItemClickListener(

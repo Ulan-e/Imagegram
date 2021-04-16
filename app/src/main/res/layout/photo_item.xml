@@ -21,8 +21,7 @@
             android:id="@+id/item_photo"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:imageUrl="@{photo.webformatURL}"
-            />
+            app:imageUrl="@{photo.webformatURL}" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,5 +30,4 @@
             android:layout_gravity="bottom"
             android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
-
 </layout>

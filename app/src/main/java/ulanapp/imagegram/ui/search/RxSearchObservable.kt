@@ -4,7 +4,6 @@ import androidx.appcompat.widget.SearchView
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
-
 class RxSearchObservable {
 
     companion object {
@@ -24,6 +23,5 @@ class RxSearchObservable {
             })
             return subject
         }
-
     }
 }

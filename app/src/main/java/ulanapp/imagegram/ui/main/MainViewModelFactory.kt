@@ -4,16 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import ulanapp.imagegram.listeners.CallFragmentListener
 
-class MainViewModelFactory: ViewModelProvider.Factory{
-
+class MainViewModelFactory(
     private var listener: CallFragmentListener
-
-    constructor(listener: CallFragmentListener) {
-        this.listener = listener
-    }
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return MainViewModel(listener) as T
     }
-
 }

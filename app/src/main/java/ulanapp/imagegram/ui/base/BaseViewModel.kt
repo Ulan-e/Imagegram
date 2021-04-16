@@ -10,5 +10,4 @@ abstract class BaseViewModel  : ViewModel() {
     fun getLoadingResult(): MutableLiveData<Boolean> {
         return loadingProgress
     }
-
 }

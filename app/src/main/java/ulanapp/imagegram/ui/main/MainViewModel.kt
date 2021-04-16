@@ -47,5 +47,4 @@ class MainViewModel : ViewModel {
             else -> false
         }
     }
-
 }

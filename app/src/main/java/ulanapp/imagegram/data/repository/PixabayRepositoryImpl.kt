@@ -6,11 +6,17 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import ulanapp.imagegram.data.api.ApiService
 import ulanapp.imagegram.data.model.PhotosResponse
+import ulanapp.imagegram.helpers.IMAGE_TYPE_ALL
+import ulanapp.imagegram.helpers.LATEST
+import ulanapp.imagegram.helpers.POPULAR
 
 class PixabayRepositoryImpl : Repository {
 
-    private val BASE_URL = "https://pixabay.com/"
-    private val API_KEY = "12507765-afe1775f327e2cb1464aa7821"
+    companion object{
+        const val BASE_URL = "https://pixabay.com/"
+        const val API_KEY = "12507765-afe1775f327e2cb1464aa7821"
+    }
+
     private var mApiService: ApiService
 
     constructor() {
@@ -23,15 +29,19 @@ class PixabayRepositoryImpl : Repository {
     }
 
     override fun getPhotos(isPopular: Boolean, query: String): Observable<PhotosResponse> {
-        return mApiService.getPhotos(API_KEY, "all", getLatestTitle(isPopular), 30, query)!!
+        return mApiService.getPhotos(
+            API_KEY,
+            IMAGE_TYPE_ALL,
+            getLatestTitle(isPopular),
+            30,
+            query)
     }
 
     private fun getLatestTitle(isPopular: Boolean): String{
         return if(isPopular){
-            "popular"
+            POPULAR
         }else{
-            "latest"
+            LATEST
         }
     }
-
 }

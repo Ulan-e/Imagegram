@@ -9,7 +9,6 @@ import ulanapp.imagegram.data.model.PhotosResponse
  * API KEY = 563492ad6f917000010000016f8f084d5a7f487a8f9b64ee49229734
  *
  */
-
 interface ApiService {
 
     @GET("api/")
@@ -19,6 +18,5 @@ interface ApiService {
         @Query("order") order: String?,
         @Query("per_page") page: Int,
         @Query("q") query: String?
-    ): Observable<PhotosResponse>?
-
+    ): Observable<PhotosResponse>
 }

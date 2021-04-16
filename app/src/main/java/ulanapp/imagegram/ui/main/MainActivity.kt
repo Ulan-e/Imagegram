@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), CallFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var mainVewModel = ViewModelProvider(this, MainViewModelFactory(this))
+        val mainVewModel = ViewModelProvider(this, MainViewModelFactory(this))
             .get(MainViewModel::class.java)
 
         setContentView(R.layout.activity_main)
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(), CallFragmentListener {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         activityBinding.mainViewModel = mainVewModel
         callFragment(HOME_FRAGMENT)
-
     }
 
     override fun callFragment(title: String) {
@@ -50,5 +49,4 @@ class MainActivity : AppCompatActivity(), CallFragmentListener {
             else -> DiscoverFragment()
         }
     }
-
 }
